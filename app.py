@@ -13,7 +13,7 @@ products = [
 def home():
     return jsonify({"message": "Welcome to the home page", "resource_endpoint": "/products"}), 200
 
-@app.route("/products", method=["GET"])
+@app.route("/products", methods=["GET"])
 def get_products():
     category = request.args.get("category")
     if category:
@@ -21,7 +21,7 @@ def get_products():
         return jsonify(filtered), 200
     return jsonify(products), 200
 
-@app.route("/products/<int:id>", method=["GET"])
+@app.route("/products/<int:id>", methods=["GET"])
 def get_product_by_id(id):
     for p in products:
         if p["id"] == id:
